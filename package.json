@@ -5,8 +5,9 @@
 	"main": "server.js",
 	"type": "module",
 	"scripts": {
+		"firebase": "node database/firebase.js",
+		"start-server": "node server.js",
 		"start": "node server.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"test-frontend": "npx http-server ./evaluate/"
 	},
 	"keywords": [],

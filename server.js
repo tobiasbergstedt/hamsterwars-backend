@@ -16,7 +16,7 @@ import matchWinners from './routes/matchWinners.js'
 import winners from './routes/winners.js'
 import losers from './routes/losers.js'
 
-const port = 3001
+const port = process.env.PORT || 3001
 
 // Middleware
 //CORS öppnar vårt projekt så det kan användas från andra domäner
