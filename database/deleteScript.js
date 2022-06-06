@@ -13,15 +13,3 @@ async function deleteScript(toBeDeleted) {
 }
 
 export default deleteScript
-
-// import { collection, doc, deleteDoc } from 'firebase/firestore'
-
-// import { db } from './firebase.js'
-
-// const idToRemove = 'lsYxBqqWL5mXQiYy5mQK'
-
-// const colRef = collection(db, 'hamsters')
-
-// const docRef = doc(colRef, idToRemove)
-
-// await deleteDoc(docRef)

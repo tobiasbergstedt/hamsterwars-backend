@@ -79,12 +79,8 @@ router.get('/:id', async (req, res) => {
 		return
 	}
 
-	if (hamsters.length === 0) {
-		res.sendStatus(404)
-		return
-	}
-
-	res.sendStatus(400)
+	res.sendStatus(404)
+	return
 })
 
 router.post('/', async (req, res) => {
