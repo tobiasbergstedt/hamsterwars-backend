@@ -76,12 +76,10 @@ router.get('/:id', async (req, res) => {
 
 	if (hamsters.length > 0) {
 		res.status(200).send(hamsters[0])
-		console.log('Hamster list is not empty: ', hamsters.length)
 		return
 	}
 
 	res.sendStatus(404)
-	console.log('Hamsters list should be empty: ', hamsters.length)
 	return
 })
 
