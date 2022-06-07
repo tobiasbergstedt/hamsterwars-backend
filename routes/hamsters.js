@@ -74,12 +74,14 @@ router.get('/:id', async (req, res) => {
 
 	hamsters = hamsters.filter((p) => p.id === idString)
 
-	if (hamsters.length === 1) {
-		res.send(hamsters[0])
+	if (hamsters.length > 0) {
+		res.status(200).send(hamsters[0])
+		console.log('Hamster list is not empty: ', hamsters.length)
 		return
 	}
 
 	res.sendStatus(404)
+	console.log('Hamsters list should be empty: ', hamsters.length)
 	return
 })
 
@@ -127,17 +129,6 @@ router.put('/:id', async (req, res) => {
 			defeats: Number(req.body.defeats) || hamsters[0].defeats,
 			games: Number(req.body.games) || hamsters[0].games,
 			id: idString,
-
-			// Använd koden nedan för att nollställa matcherna
-			// name: req.body.name || hamsters[0].name,
-			// age: Number(req.body.age) || hamsters[0].age,
-			// favFood: req.body.favFood || hamsters[0].favFood,
-			// loves: req.body.loves || hamsters[0].loves,
-			// imgName: req.body.imgName || hamsters[0].imgName,
-			// wins: 0,
-			// defeats: 0,
-			// games: 0,
-			// id: idString
 		}
 		if (
 			newData.name === hamsters[0].name &&
@@ -152,7 +143,7 @@ router.put('/:id', async (req, res) => {
 			res.sendStatus(400)
 			return
 		}
-		updateScript(newData)
+		await updateScript(newData)
 		res.sendStatus(200)
 		return
 	}
@@ -173,7 +164,7 @@ router.delete('/:id', async (req, res) => {
 	hamsters = hamsters.filter((p) => p.id === toBeDeleted)
 
 	if (hamsters.length > 0) {
-		deleteScript(toBeDeleted)
+		await deleteScript(toBeDeleted)
 		res.sendStatus(200)
 		return
 	}
